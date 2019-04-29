@@ -29,8 +29,8 @@ import java.util.*;
 
 public class ServerUtils
 {
-    protected static List<Quadruple<String, String, List<IAlgorithm>, List<IReport>>> catalogAlgorithmsAndReports;
-    protected static Map<String, Pair<String, String>> tokens;
+    protected static List<Triple<String, List<IAlgorithm>, List<IReport>>> catalogAlgorithmsAndReports;
+    protected static Map<String, String> tokens;
 
     static
     {
@@ -95,7 +95,7 @@ public class ServerUtils
             writer.writeStartElement("user");
             writer.writeAttribute("name","root");
             writer.writeAttribute("password","root");
-            writer.writeAttribute("category","MASTER");
+            //writer.writeAttribute("category","MASTER");
             writer.writeEndElement();
 
             writer.writeRaw("<!-- Copy this line to create more users -->");
@@ -105,7 +105,7 @@ public class ServerUtils
             writer.writeStartElement("user");
             writer.writeAttribute("name","admin");
             writer.writeAttribute("password","admin");
-            writer.writeAttribute("category","MASTER");
+            //writer.writeAttribute("category","MASTER");
             writer.writeEndElement();
 
             XMLUtils.indent(writer,0);
@@ -129,12 +129,12 @@ public class ServerUtils
         catalogAlgorithmsAndReports.clear();
         catalogAlgorithmsAndReports.addAll( new FileManagerJSON().readCatalogPersistenceFile());
     }
-    protected static synchronized String addToken(String user, String category)
+    protected static synchronized String addToken(String user)
     {
-        String src = user + category + Math.random();
+        String src = user  + Math.random();
         byte [] srcEncoded = Base64.getEncoder().encode(src.getBytes());
         String token = new String(srcEncoded);
-        tokens.put(token, Pair.unmodifiableOf(user, category));
+        tokens.put(token, user);
         return token;
     }
 
@@ -153,7 +153,7 @@ public class ServerUtils
      * @param token token to extract information
      * @return Pair object with its username and its category
      */
-    protected static synchronized Pair<String, String> getInfoFromToken(String token)
+    protected static synchronized  String getInfoFromToken(String token)
     {
         return tokens.get(token);
     }
@@ -317,12 +317,12 @@ public class ServerUtils
      * @param catalogEntry Quadruple object with the name of the catalog, catalog's category, a list of its algorithms and a list of its reports
      * @return JSON representation of the catalog
      */
-    protected static JSONObject parseCatalog(Quadruple<String, String, List<IAlgorithm>, List<IReport>> catalogEntry)
+    protected static JSONObject parseCatalog(Triple<String, List<IAlgorithm>, List<IReport>> catalogEntry)
     {
         String catalogName = catalogEntry.getFirst();
-        String catalogCategory = catalogEntry.getSecond();
-        List<IAlgorithm> algorithms = catalogEntry.getThird();
-        List<IReport> reports = catalogEntry.getFourth();
+        //String catalogCategory = catalogEntry.getSecond();
+        List<IAlgorithm> algorithms = catalogEntry.getSecond();
+        List<IReport> reports = catalogEntry.getThird();
         JSONObject catalogJSON = new JSONObject();
         JSONArray externalsArray = new JSONArray();
         for(IAlgorithm alg : algorithms)
@@ -336,7 +336,7 @@ public class ServerUtils
             externalsArray.add(new JSONValue(repJSON));
         }
         catalogJSON.put("name", new JSONValue(catalogName));
-        catalogJSON.put("category", new JSONValue(catalogCategory));
+        //catalogJSON.put("category", new JSONValue(catalogCategory));
         catalogJSON.put("files", new JSONValue(externalsArray));
         return catalogJSON;
     }
@@ -368,7 +368,7 @@ public class ServerUtils
     protected static List<String> getCatalogsNames()
     {
         List<String> catalogs = new LinkedList<>();
-        for(Quadruple<String, String, List<IAlgorithm>, List<IReport>> entry : catalogAlgorithmsAndReports)
+        for(Triple<String, List<IAlgorithm>, List<IReport>> entry : catalogAlgorithmsAndReports)
         {
             catalogs.add(entry.getFirst());
         }
@@ -418,7 +418,7 @@ public class ServerUtils
     protected static String getCategoryFromExecutionName(String executeName)
     {
         String category = "";
-        boolean found = false;
+        /*boolean found = false;
         for(Quadruple<String, String, List<IAlgorithm>, List<IReport>> entry : catalogAlgorithmsAndReports)
         {
             List<IAlgorithm> algs = entry.getThird();
@@ -448,24 +448,25 @@ public class ServerUtils
             if(found)
                 break;
         }
-
+*/
         return category;
     }
 
     /**
      * Checks if the user is authorized to access the API functionalities
      * @param token user's token
-     * @param allowedCategoryOptional optional allowed Category
      * @return true if the user is authorized, false if not
      */
-    public static boolean authorizeUser(String token, String... allowedCategoryOptional)
+    public static boolean authorizeUser(String token)
     {
-        String allowedCategory = (allowedCategoryOptional.length == 1) ? allowedCategoryOptional[0] : "INVITED";
+        //String allowedCategory = (allowedCategoryOptional.length == 1) ? allowedCategoryOptional[0] : "INVITED";
         boolean allow = false;
 
         if(ServerUtils.validateToken(token))
         {
-            Pair<String, String> tokenInfo = ServerUtils.getInfoFromToken(token);
+            allow=true;
+
+            /*Pair<String, String> tokenInfo = ServerUtils.getInfoFromToken(token);
             String userCategory = tokenInfo.getSecond();
 
             if(allowedCategory.equalsIgnoreCase("INVITED"))
@@ -486,7 +487,7 @@ public class ServerUtils
             }
 
             else
-                throw new RuntimeException("Unknown catalog category -> "+allowedCategory);
+                throw new RuntimeException("Unknown catalog category -> "+allowedCategory);*/
         }
 
         return allow;

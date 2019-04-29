@@ -5,6 +5,7 @@ import com.net2plan.interfaces.networkDesign.IReport;
 import com.net2plan.internal.IExternal;
 import com.net2plan.utils.ClassLoaderUtils;
 import com.net2plan.utils.Quadruple;
+import com.net2plan.utils.Triple;
 import org.apache.commons.io.FileUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -20,7 +21,7 @@ import java.util.List;
 
 public class FileManagerJSON {
 
-    public static void writeCatalogPersistenceFile(List<Quadruple<String, String, List<IAlgorithm>, List<IReport>>> entry){
+    public static void writeCatalogPersistenceFile(List<Triple<String, List<IAlgorithm>, List<IReport>>> entry){
 
         JSONObject catalog = new JSONObject();
         catalog.put("catalog",entry);
@@ -36,9 +37,9 @@ public class FileManagerJSON {
         }
 
     }
-    public  List<Quadruple<String, String, List<IAlgorithm>, List<IReport>>> readCatalogPersistenceFile(){
+    public  List<Triple<String, List<IAlgorithm>, List<IReport>>> readCatalogPersistenceFile(){
 
-        List<Quadruple<String, String, List<IAlgorithm>, List<IReport>>> entry = new ArrayList<>();
+        List<Triple<String, List<IAlgorithm>, List<IReport>>> entry = new ArrayList<>();
 
         try{
 
@@ -53,12 +54,11 @@ public class FileManagerJSON {
                 JSONObject catalog = (JSONObject) obj;
 
                 String catalogName = catalog.getString("first");
-                String catalogCategory = catalog.getString("second");
 
                 List<IAlgorithm> algorithms = new LinkedList<>();
                 List<IReport> reports = new LinkedList<>();
 
-                File uploadedFile = new File(ServerUtils.TOMCAT_FILES_DIR + File.separator + catalog.get("first"));
+                File uploadedFile = new File(ServerUtils.TOMCAT_FILES_DIR + File.separator + catalogName);
 
                 URLClassLoader cl = new URLClassLoader(new URL[]{uploadedFile.toURI().toURL()}, this.getClass().getClassLoader());
                 List<Class<IExternal>> classes = ClassLoaderUtils.getClassesFromFile(uploadedFile, IExternal.class, cl);
@@ -74,7 +74,7 @@ public class FileManagerJSON {
                 }
 
 
-                entry.add(Quadruple.unmodifiableOf(catalogName, catalogCategory, algorithms, reports));
+                entry.add(Triple.unmodifiableOf(catalogName, algorithms, reports));
             }
 
         } catch (Exception ex) {

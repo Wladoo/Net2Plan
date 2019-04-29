@@ -73,10 +73,10 @@ public class OaaSResources implements ServletContextListener
                             case "user":
                                 String user = xmlStreamReader.getAttributeValue(xmlStreamReader.getAttributeIndex(null, "name"));
                                 String pass = xmlStreamReader.getAttributeValue(xmlStreamReader.getAttributeIndex(null, "password"));
-                                String category = xmlStreamReader.getAttributeValue(xmlStreamReader.getAttributeIndex(null, "category"));
+                                //String category = xmlStreamReader.getAttributeValue(xmlStreamReader.getAttributeIndex(null, "category"));
                                 if(username.equals(user) && password.equals(pass))
                                 {
-                                    String token = ServerUtils.addToken(user, category);
+                                    String token = ServerUtils.addToken(user);
                                     json.put("message",new JSONValue("Authenticated"));
                                     json.put("token", new JSONValue(token));
                                     found = true;
@@ -113,7 +113,7 @@ public class OaaSResources implements ServletContextListener
         JSONObject catalogsJSON = new JSONObject();
         JSONArray catalogsArray = new JSONArray();
         //readCatalog();
-        for(Quadruple<String, String, List<IAlgorithm>, List<IReport>> catalogEntry : ServerUtils.catalogAlgorithmsAndReports)
+        for(Triple<String, List<IAlgorithm>, List<IReport>> catalogEntry : ServerUtils.catalogAlgorithmsAndReports)
         {
             JSONObject catalogJSON = ServerUtils.parseCatalog(catalogEntry);
             catalogsArray.add(new JSONValue(catalogJSON));
@@ -140,13 +140,13 @@ public class OaaSResources implements ServletContextListener
         //readCatalog();
         JSONObject json = new JSONObject();
         String token = webRequest.getHeader("token");
-        if(!ServerUtils.authorizeUser(token, "MASTER"))
+        if(!ServerUtils.authorizeUser(token))
             return ServerUtils.UNAUTHORIZED();
 
         if(!TOMCAT_FILES_DIR.exists())
             TOMCAT_FILES_DIR.mkdirs();
 
-        String catalogCategory = webRequest.getHeader("category");
+       // String catalogCategory = webRequest.getHeader("category");
         /*if(!catalogCategory.equalsIgnoreCase("INVITED") || !catalogCategory.equalsIgnoreCase("MASTER"))
         {
             json.put("message", new JSONValue("Unknown category -> "+catalogCategory));
@@ -192,7 +192,7 @@ public class OaaSResources implements ServletContextListener
                 }
             }
             ServerUtils.readCatalog();
-            ServerUtils.catalogAlgorithmsAndReports.add(Quadruple.unmodifiableOf(catalogName, catalogCategory, algorithms, reports));
+            ServerUtils.catalogAlgorithmsAndReports.add(Triple.unmodifiableOf(catalogName, algorithms, reports));
 
             ServerUtils.writeCatalog();
             ServerUtils.cleanFolder(TOMCAT_FILES_DIR, false);
@@ -228,7 +228,7 @@ public class OaaSResources implements ServletContextListener
             return ServerUtils.UNAUTHORIZED();
 
         JSONObject catalogJSON = null;
-        for(Quadruple<String, String, List<IAlgorithm>, List<IReport>> catalogEntry : ServerUtils.catalogAlgorithmsAndReports)
+        for(Triple<String, List<IAlgorithm>, List<IReport>> catalogEntry : ServerUtils.catalogAlgorithmsAndReports)
         {
             String catalog = catalogEntry.getFirst();
             if(catalog.equals(catalogName))
@@ -262,9 +262,9 @@ public class OaaSResources implements ServletContextListener
 
         JSONObject algorithmsJSON = new JSONObject();
         JSONArray algorithmsArray = new JSONArray();
-        for(Quadruple<String, String, List<IAlgorithm>, List<IReport>> catalogEntry : ServerUtils.catalogAlgorithmsAndReports)
+        for(Triple<String, List<IAlgorithm>, List<IReport>> catalogEntry : ServerUtils.catalogAlgorithmsAndReports)
         {
-            List<IAlgorithm> algs = catalogEntry.getThird();
+            List<IAlgorithm> algs = catalogEntry.getSecond();
             for(IAlgorithm alg : algs)
             {
                 JSONObject algorithmJSON = ServerUtils.parseAlgorithm(alg);
@@ -291,9 +291,9 @@ public class OaaSResources implements ServletContextListener
 
         JSONObject algorithmJSON = null;
         boolean found = false;
-        for(Quadruple<String, String, List<IAlgorithm>, List<IReport>> catalogEntry : ServerUtils.catalogAlgorithmsAndReports)
+        for(Triple<String, List<IAlgorithm>, List<IReport>> catalogEntry : ServerUtils.catalogAlgorithmsAndReports)
         {
-            List<IAlgorithm> algs = catalogEntry.getThird();
+            List<IAlgorithm> algs = catalogEntry.getSecond();
             for(IAlgorithm alg : algs)
             {
                 String algName = ServerUtils.getAlgorithmName(alg);
@@ -332,9 +332,9 @@ public class OaaSResources implements ServletContextListener
 
         JSONObject reportsJSON = new JSONObject();
         JSONArray reportsArray = new JSONArray();
-        for(Quadruple<String, String, List<IAlgorithm>, List<IReport>> catalogEntry : ServerUtils.catalogAlgorithmsAndReports)
+        for(Triple<String, List<IAlgorithm>, List<IReport>> catalogEntry : ServerUtils.catalogAlgorithmsAndReports)
         {
-            List<IReport> reps = catalogEntry.getFourth();
+            List<IReport> reps = catalogEntry.getThird();
             for(IReport rep : reps)
             {
                 JSONObject reportJSON = ServerUtils.parseReport(rep);
@@ -361,9 +361,9 @@ public class OaaSResources implements ServletContextListener
 
         JSONObject reportJSON = null;
         boolean found = false;
-        for(Quadruple<String, String, List<IAlgorithm>, List<IReport>> catalogEntry : ServerUtils.catalogAlgorithmsAndReports)
+        for(Triple<String, List<IAlgorithm>, List<IReport>> catalogEntry : ServerUtils.catalogAlgorithmsAndReports)
         {
-            List<IReport> reps = catalogEntry.getFourth();
+            List<IReport> reps = catalogEntry.getThird();
             for(IReport rep : reps)
             {
                 String repName = ServerUtils.getReportName(rep);
@@ -393,10 +393,10 @@ public class OaaSResources implements ServletContextListener
     public Response getPersistenceFile(@PathParam("name") String algorithmName)
     {
         String token = webRequest.getHeader("token");
-        if(!ServerUtils.authorizeUser(token, "MASTER"))
+        if(!ServerUtils.authorizeUser(token))
             return ServerUtils.UNAUTHORIZED();
 
-        JSONObject resultsJSON = FileManager.readPersistenceFile(algorithmName,ServerUtils.tokens.get(token).getFirst());
+        JSONObject resultsJSON = FileManager.readPersistenceFile(algorithmName,ServerUtils.tokens.get(token));
 
         if(resultsJSON == null)
         {
@@ -444,9 +444,9 @@ public class OaaSResources implements ServletContextListener
 
         String category = ServerUtils.getCategoryFromExecutionName(executeName);
 
-        System.out.println("CATEGORY"+ category);
+        //System.out.println("CATEGORY"+ category);
         String token = webRequest.getHeader("token");
-        if(!ServerUtils.authorizeUser(token, category))
+        if(!ServerUtils.authorizeUser(token))
             return ServerUtils.UNAUTHORIZED();
 
         NetPlan netPlan = new NetPlan(inputNetPlan);
@@ -455,10 +455,10 @@ public class OaaSResources implements ServletContextListener
         {
             boolean found = false;
             IAlgorithm algorithm = null;
-            for(Quadruple<String, String, List<IAlgorithm>, List<IReport>> catalogEntry : ServerUtils.catalogAlgorithmsAndReports)
+            for(Triple<String, List<IAlgorithm>, List<IReport>> catalogEntry : ServerUtils.catalogAlgorithmsAndReports)
             {
 
-                List<IAlgorithm> algs = catalogEntry.getThird();
+                List<IAlgorithm> algs = catalogEntry.getSecond();
                 for(IAlgorithm alg : algs)
                 {
                     String algName = ServerUtils.getAlgorithmName(alg);
@@ -560,7 +560,7 @@ public class OaaSResources implements ServletContextListener
 
             try{
                 response = algorithm.executeAlgorithm(netPlan, algorithmParameters, net2planParameters);
-                FileManager.writePersistenceFile(response,executeName,ServerUtils.tokens.get(token).getFirst());
+                FileManager.writePersistenceFile(response,executeName,ServerUtils.tokens.get(token));
 
             }catch(Exception e)
             {
@@ -582,9 +582,9 @@ public class OaaSResources implements ServletContextListener
         {
             IReport report = null;
             boolean found = false;
-            for(Quadruple<String, String, List<IAlgorithm>, List<IReport>> catalogEntry : ServerUtils.catalogAlgorithmsAndReports)
+            for(Triple<String, List<IAlgorithm>, List<IReport>> catalogEntry : ServerUtils.catalogAlgorithmsAndReports)
             {
-                List<IReport> reps = catalogEntry.getFourth();
+                List<IReport> reps = catalogEntry.getThird();
                 for(IReport rep : reps)
                 {
                     String repName = ServerUtils.getReportName(rep);

@@ -222,13 +222,13 @@ public class Net2PlanOaaSClient
         client.authenticateUser("admin","admin");
         System.out.println(client.authToken);
         //System.out.println(client.getCatalogs().readEntity(String.class));
-        System.out.println(client.uploadCatalog(new File("C:\\Users\\Manuel\\Desktop\\Net2Plan\\AlgoritmosPruebas\\net2plan-algorithm-0.7.0-SNAPSHOT.jar"),ClientUtils.Category.MASTER).readEntity(String.class));
+        System.out.println(client.uploadCatalog(new File("C:\\Users\\Manu\\Desktop\\Net2Plan\\AlgoritmosPruebas\\net2plan-algorithm-0.7.0-SNAPSHOT.jar"),ClientUtils.Category.MASTER).readEntity(String.class));
         System.out.println(client.getCatalogs().readEntity(String.class));
         client.executeOperation(ClientUtils.ExecutionType.ALGORITHM,"ExampleUsePersistence",null,new NetPlan());
         System.out.println(client.getPersistenceFile("ExampleUsePersistence").readEntity(String.class));
         client.executeOperation(ClientUtils.ExecutionType.ALGORITHM,"ExampleUsePersistence2",null,new NetPlan());
         System.out.println(client.getPersistenceFile("ExampleUsePersistence2").readEntity(String.class));
-        client.uploadCatalog(new File("C:\\Users\\Manuel\\Desktop\\Net2Plan\\AlgoritmosPruebas\\net2plan-algorithm-new-0.7.0-SNAPSHOT.jar"),ClientUtils.Category.MASTER).readEntity(String.class);
+        client.uploadCatalog(new File("C:\\Users\\Manu\\Desktop\\Net2Plan\\AlgoritmosPruebas\\net2plan-algorithm-new-0.7.0-SNAPSHOT.jar"),ClientUtils.Category.MASTER).readEntity(String.class);
         System.out.println(client.getCatalogs().readEntity(String.class));
        //
        // client.uploadCatalog(new File("C:\\Users\\Manuel\\Desktop\\Net2Plan\\AlgoritmosPruebas\\net2plan-algorithm-0.7.0-SNAPSHOT.jar"),ClientUtils.Category.MASTER).readEntity(String.class);
