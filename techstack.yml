@@ -1,0 +1,585 @@
+repo_name: Wladoo/Net2Plan
+report_id: 99380cd0faa32081320ec644bc936244
+version: 0.1
+repo_type: Public
+timestamp: '2024-02-25T10:25:27+00:00'
+requested_by: CFSNM
+provider: github
+branch: master
+detected_tools_count: 37
+tools:
+- name: Java
+  description: A concurrent, class-based, object-oriented, language specifically designed
+    to have as few implementation dependencies as possible
+  website_url: https://www.java.com
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/995/K85ZWV2F.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan
+  detection_source: Repo Metadata
+- name: JFreeChart
+  description: A free Java chart library
+  website_url: http://www.jfree.org/jfreechart/
+  version: 1.5.0
+  license: LGPL-2.1
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Charting Libraries
+  image_url: https://img.stackshare.io/service/8591/Picture_6_400x400.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/pom.xml
+  detection_source: pom.xml
+  last_updated_by: César
+  last_updated_on: 2019-03-21 10:01:23.000000000 Z
+- name: guava
+  description: Google Core Libraries for Java 6+
+  website_url: https://github.com/google/guava
+  version: '21.0'
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Java Tools
+  image_url: https://img.stackshare.io/service/2970/wBjKn0ol.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/pom.xml
+  detection_source: pom.xml
+  last_updated_by: Jorge San Emeterio
+  last_updated_on: 2017-02-17 08:44:14.000000000 Z
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan
+  detection_source: Repo Metadata
+- name: JUnit
+  description: A programmer-oriented testing framework for Java
+  website_url: http://junit.org/
+  version: '4.12'
+  license: EPL-1.0
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Testing Frameworks
+  image_url: https://img.stackshare.io/service/2020/874086.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/pom.xml
+  detection_source: pom.xml
+  last_updated_by: Jorge SE
+  last_updated_on: 2017-05-10 07:45:22.000000000 Z
+- name: Mockito
+  description: Tasty mocking framework for unit tests in Java
+  website_url: https://site.mockito.org/
+  version: 2.7.22
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Testing Frameworks
+  image_url: https://img.stackshare.io/service/2021/4y634TJm_400x400.jpg
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/pom.xml
+  detection_source: pom.xml
+  last_updated_by: Jorge SE
+  last_updated_on: 2017-05-05 11:09:36.000000000 Z
+- name: Travis CI
+  description: A hosted continuous integration service for open source and private
+    projects
+  website_url: http://travis-ci.com/
+  open_source: false
+  hosted_saas: true
+  category: Build, Test, Deploy
+  sub_category: Continuous Integration
+  image_url: https://img.stackshare.io/service/460/Lu6cGu0z_400x400.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/.travis.yml
+  detection_source: ".travis.yml"
+  last_updated_by: Jorge SE
+  last_updated_on: 2017-05-24 10:03:01.000000000 Z
+- name: Shell
+  description: A shell is a text-based terminal, used for manipulating programs and
+    files. Shell scripts typically manage program execution.
+  website_url: https://en.wikipedia.org/wiki/Shell_script
+  open_source: false
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/4631/default_c2062d40130562bdc836c13dbca02d318205a962.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan
+  detection_source: Repo Metadata
+- name: XSLT
+  description: The official Twitter account for the sum of all knowledge, Wikipedia.
+    Overseen by @jeffelder.
+  website_url: https://en.wikipedia.org/wiki/XSLT
+  open_source: false
+  hosted_saas: false
+  image_url: https://img.stackshare.io/service/4253/nZXfdUQq_normal.jpg
+  detection_source_url: https://github.com/Wladoo/Net2Plan
+  detection_source: Repo Metadata
+- name: com.fasterxml.woodstox:woodstox-core
+  description: Woodstox is a high-performance XML processor that implements Stax
+  version: 5.0.1
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/pom.xml
+  detection_source: pom.xml
+  last_updated_by: Jorge SE
+  last_updated_on: 2017-05-11 09:47:55.000000000 Z
+  vulnerabilities:
+  - name: Denial of Service due to parser crash
+    cve_id: CVE-2022-40153
+    cve_url: https://github.com/advisories/GHSA-fv22-xp26-mm9w
+    detected_date: Oct 26
+    severity: high
+    first_patched: 5.4.0
+  - name: Denial of Service due to parser crash
+    cve_id: CVE-2022-40152
+    cve_url: https://github.com/advisories/GHSA-3f7h-mf4q-vrm4
+    detected_date: Oct 26
+    severity: moderate
+    first_patched: 5.4.0
+  - name: Denial of Service via stack overflow
+    cve_id: CVE-2022-40155
+    cve_url: https://github.com/advisories/GHSA-5hc5-c3m9-8vcj
+    detected_date: Oct 26
+    severity: low
+    first_patched: 5.4.0
+  - name: Denial of Service due to parser crash
+    cve_id: CVE-2022-40156
+    cve_url: https://github.com/advisories/GHSA-4rv7-wj6m-6c6r
+    detected_date: Oct 26
+    severity: low
+    first_patched: 5.4.0
+  - name: Denial of Service via stack overflow
+    cve_id: CVE-2022-40154
+    cve_url: https://github.com/advisories/GHSA-9fwf-46g9-45rx
+    detected_date: Oct 26
+    severity: low
+    first_patched: 5.4.0
+  - name: XStream Denial of Service due to parser crash
+    cve_id: CVE-2022-40151
+    cve_url: https://github.com/advisories/GHSA-3mq5-fq9h-gj7j
+    detected_date: Oct 27
+    severity: low
+    first_patched: 5.4.0
+- name: com.google.guava:guava
+  description: Guava is a suite of core and expanded libraries that include utility
+    classes
+  version: '21.0'
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/pom.xml
+  detection_source: pom.xml
+  last_updated_by: Jorge SE
+  last_updated_on: 2017-04-21 09:42:07.000000000 Z
+  vulnerabilities:
+  - name: Guava vulnerable to insecure use of temporary directory
+    cve_id: CVE-2023-2976
+    cve_url: https://github.com/advisories/GHSA-7g45-4rm6-3mm3
+    detected_date: Jun 15
+    severity: moderate
+    first_patched: 32.0.0-android
+  - name: Denial of Service in Google Guava
+    cve_id: CVE-2018-10237
+    cve_url: https://github.com/advisories/GHSA-mvr2-9pj6-7w5j
+    detected_date: Aug 22
+    severity: moderate
+    first_patched: 24.1.1-android
+  - name: Information Disclosure in Guava
+    cve_id: CVE-2020-8908
+    cve_url: https://github.com/advisories/GHSA-5mg8-w23w-74h3
+    detected_date: Aug 22
+    severity: low
+    first_patched: 32.0.0-android
+- name: com.healthmarketscience.jackcess:jackcess
+  description: A pure Java library for reading from and writing to MS Access databases
+  version: 2.1.3
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/pom.xml
+  detection_source: pom.xml
+  last_updated_by: Jorge SE
+  last_updated_on: 2017-04-21 09:42:07.000000000 Z
+- name: com.miglayout:miglayout-swing
+  description: MiGLayout - Java Layout Manager for Swing
+  version: '5.0'
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/pom.xml
+  detection_source: pom.xml
+  last_updated_by: Jorge SE
+  last_updated_on: 2017-05-11 09:47:55.000000000 Z
+- name: commons-cli:commons-cli
+  description: Apache Commons CLI provides a simple API for presenting
+  version: '1.3'
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/pom.xml
+  detection_source: pom.xml
+  last_updated_by: Jorge SE
+  last_updated_on: 2017-04-18 09:25:15.000000000 Z
+- name: commons-io:commons-io
+  description: The Apache Commons IO library contains utility classes
+  version: '2.5'
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/pom.xml
+  detection_source: pom.xml
+  last_updated_by: Jorge SE
+  last_updated_on: 2017-04-18 09:25:15.000000000 Z
+  vulnerabilities:
+  - name: Path Traversal and Improper Input Validation in Apache Commons IO
+    cve_id: CVE-2021-29425
+    cve_url: https://github.com/advisories/GHSA-gwrp-pvrq-jmwv
+    detected_date: Aug 22
+    severity: moderate
+    first_patched: '2.7'
+- name: commons-lang:commons-lang
+  description: Commons Lang
+  version: '2.6'
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/pom.xml
+  detection_source: pom.xml
+  last_updated_by: Jorge SE
+  last_updated_on: 2017-04-18 09:25:15.000000000 Z
+- name: commons-logging:commons-logging
+  description: Apache Commons Logging is a thin adapter allowing configurable bridging
+    to other
+  version: '1.2'
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/pom.xml
+  detection_source: pom.xml
+  last_updated_by: Jorge SE
+  last_updated_on: 2017-04-18 09:25:15.000000000 Z
+- name: junit:junit
+  description: JUnit is a unit testing framework for Java
+  version: '4.12'
+  license: EPL-1.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/pom.xml
+  detection_source: pom.xml
+  last_updated_by: Jorge SE
+  last_updated_on: 2017-05-11 09:47:55.000000000 Z
+  vulnerabilities:
+  - name: TemporaryFolder on unix-like systems does not limit access to created files
+    cve_id: CVE-2020-15250
+    cve_url: https://github.com/advisories/GHSA-269g-pwp5-87pp
+    detected_date: Aug 22
+    severity: moderate
+    first_patched: 4.13.1
+- name: net.java.dev.jna:jna
+  description: Java Native Access
+  version: 4.1.0
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/pom.xml
+  detection_source: pom.xml
+  last_updated_by: ppavon
+  last_updated_on: 2019-03-18 20:08:26.000000000 Z
+- name: net.sf.jung:jung-algorithms
+  description: Algorithms for the JUNG project
+  version: 2.0.1
+  license: DSDP
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/pom.xml
+  detection_source: pom.xml
+  last_updated_by: Jorge San Emeterio
+  last_updated_on: 2017-02-17 08:44:14.000000000 Z
+- name: net.sf.jung:jung-api
+  description: Graph interfaces used by the JUNG project
+  version: 2.0.1
+  license: DSDP
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/pom.xml
+  detection_source: pom.xml
+  last_updated_by: Jorge San Emeterio
+  last_updated_on: 2017-02-17 08:44:14.000000000 Z
+- name: net.sf.jung:jung-graph-impl
+  description: Graph implementations for the JUNG project
+  version: 2.0.1
+  license: DSDP
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/pom.xml
+  detection_source: pom.xml
+  last_updated_by: Jorge SE
+  last_updated_on: 2017-05-25 09:34:13.000000000 Z
+- name: net.sf.jung:jung-io
+  description: IO support classes for JUNG
+  version: '2.1'
+  license: DSDP
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/pom.xml
+  detection_source: pom.xml
+  last_updated_by: Jorge San Emeterio
+  last_updated_on: 2017-02-17 08:44:14.000000000 Z
+- name: net.sf.jung:jung-visualization
+  description: Core visualization support for the JUNG project
+  version: 2.0.1
+  license: DSDP
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/pom.xml
+  detection_source: pom.xml
+  last_updated_by: Pablo Pavón Mariño
+  last_updated_on: 2017-05-24 10:23:20.000000000 Z
+- name: org.apache.commons:commons-csv
+  description: The Apache Commons CSV library provides a simple interface for reading
+    and writing CSV files of various types
+  version: '1.4'
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/pom.xml
+  detection_source: pom.xml
+  last_updated_by: César
+  last_updated_on: 2019-03-21 10:01:23.000000000 Z
+- name: org.apache.commons:commons-lang3
+  description: Apache Commons Lang
+  version: '3.4'
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/pom.xml
+  detection_source: pom.xml
+  last_updated_by: César
+  last_updated_on: 2019-03-21 10:01:23.000000000 Z
+- name: org.apache.commons:commons-math3
+  description: The Apache Commons Math project is a library of lightweight
+  version: '3.5'
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/pom.xml
+  detection_source: pom.xml
+  last_updated_by: César
+  last_updated_on: 2019-03-21 10:01:23.000000000 Z
+- name: org.apache.poi:poi
+  description: Apache POI - Java API To Access Microsoft Format Files
+  version: '3.15'
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/pom.xml
+  detection_source: pom.xml
+  last_updated_by: César
+  last_updated_on: 2019-03-21 10:01:23.000000000 Z
+  vulnerabilities:
+  - name: Denial of Service in Apache POI
+    cve_id: CVE-2017-12626
+    cve_url: https://github.com/advisories/GHSA-523c-xh4g-mh5m
+    detected_date: Aug 22
+    severity: high
+    first_patched: '3.17'
+  - name: 'Improper Restriction of XML External Entity Reference in Apache POI '
+    cve_id: CVE-2019-12415
+    cve_url: https://github.com/advisories/GHSA-9jwc-q6j3-8g9g
+    detected_date: Jun 29
+    severity: moderate
+    first_patched: 4.1.1
+- name: org.apache.poi:poi-ooxml
+  description: Apache POI - Java API To Access Microsoft Format Files
+  version: '3.15'
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/pom.xml
+  detection_source: pom.xml
+  last_updated_by: César
+  last_updated_on: 2019-03-21 10:01:23.000000000 Z
+- name: org.assertj:assertj-core
+  description: Rich and fluent assertions for testing for Java
+  version: 3.7.0
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/pom.xml
+  detection_source: pom.xml
+  last_updated_by: César
+  last_updated_on: 2019-03-21 10:01:23.000000000 Z
+- name: org.codehaus.woodstox:stax2-api
+  description: Tax2 API is an extension to basic Stax 1.0 API that adds significant
+    new functionality
+  version: 4.0.0
+  license: DSDP
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/pom.xml
+  detection_source: pom.xml
+  last_updated_by: César
+  last_updated_on: 2019-03-21 10:01:23.000000000 Z
+- name: org.jfree:jfreechart
+  description: JFreeChart is a class library, written in Java, for generating charts
+  version: 1.5.0
+  license: LGPL-3.0-only
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/pom.xml
+  detection_source: pom.xml
+  last_updated_by: César
+  last_updated_on: 2019-03-21 10:01:23.000000000 Z
+- name: org.jgrapht:jgrapht-core
+  description: Master repository for the JGraphT project
+  version: 1.3.1
+  license: EPL-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/pom.xml
+  detection_source: pom.xml
+  last_updated_by: César
+  last_updated_on: 2019-03-21 10:01:23.000000000 Z
+- name: org.jsoup:jsoup
+  description: Jsoup is a Java library for working with real-world HTML
+  version: 1.8.3
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/pom.xml
+  detection_source: pom.xml
+  last_updated_by: César
+  last_updated_on: 2019-03-21 10:01:23.000000000 Z
+  vulnerabilities:
+  - name: Uncaught Exception in jsoup
+    cve_id: CVE-2021-37714
+    cve_url: https://github.com/advisories/GHSA-m72m-mhq2-9p6c
+    detected_date: Aug 24
+    severity: high
+    first_patched: 1.14.2
+  - name: jsoup may not sanitize code injection XSS attempts if SafeList.preserveRelativeLinks
+      is enabled
+    cve_id: CVE-2022-36033
+    cve_url: https://github.com/advisories/GHSA-gp7f-rwcx-9369
+    detected_date: Sep 2
+    severity: moderate
+    first_patched: 1.15.3
+- name: org.mockito:mockito-core
+  description: Mockito mock objects library core API and implementation
+  version: 2.7.22
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/pom.xml
+  detection_source: pom.xml
+  last_updated_by: César
+  last_updated_on: 2019-03-21 10:01:23.000000000 Z
+- name: org.reflections:reflections
+  description: Reflections - a Java runtime metadata analysis
+  version: 0.9.11
+  license: WTFPL
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/pom.xml
+  detection_source: pom.xml
+  last_updated_by: César
+  last_updated_on: 2019-03-21 10:01:23.000000000 Z
+- name: pl.pragmatists:JUnitParams
+  description: Better parameterised tests for JUnit
+  version: 1.1.0
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/Wladoo/Net2Plan/blob/master/pom.xml
+  detection_source: pom.xml
+  last_updated_by: Jorge SE
+  last_updated_on: 2017-05-10 07:45:22.000000000 Z
